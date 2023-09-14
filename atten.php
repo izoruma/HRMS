@@ -57,14 +57,16 @@
 </ol>
 <form method="post">
 <div class="validation-form" style="margin-bottom: 30px;">
-	<h2 style="color: #1abc9c;">Attendece View</h2>
+	<h2 style="color: #1abc9c;">Attendee View</h2>
 	<div class="row" style="margin-bottom: 10px;">
 		<div class="col-md-2">
-			<select id="sortby" name="by" style="text-transform: capitalize;" onchange="sortbychange();" onclick="sortbychange();">
-				<option value="1" <?php if($SelectedSortById==1){echo "selected";} ?>>By All</option>
-				<option value="2" <?php if($SelectedSortById==2){echo "selected";} ?>>By Month</option>
-				<option value="3" <?php if($SelectedSortById==3){echo "selected";} ?>>By Year</option>
-			</select>
+			<h1>
+			  <select id="sortby" name="by" style="text-transform: capitalize;" onchange="sortbychange();" onclick="sortbychange();">
+			    <option value="1" <?php if($SelectedSortById==1){echo "selected";} ?>>By All</option>
+			    <option value="2" <?php if($SelectedSortById==2){echo "selected";} ?>>By Month</option>
+			    <option value="3" <?php if($SelectedSortById==3){echo "selected";} ?>>By Year</option>
+		      </select>
+			  <strong> </strong></h1>
 		</div>
 		<div class="col-md-2">
 			<select id="year" name="years" style="text-transform: capitalize; display: none;" required="">

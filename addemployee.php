@@ -1,5 +1,11 @@
 
 <?php
+
+	include_once('controller/connect.php');
+	
+	$dbs = new database();
+	$db=$dbs->connection();
+	
 if(isset($_POST['submit']))
 {
  echo  $empid=$_POST['empid']; 
@@ -28,14 +34,36 @@ if(isset($_POST['submit']))
      echo  $password=$_POST['password']; 
      echo  $Salary=$_POST['Salary']; 
     
-     $con=mysqli_connect("localhost","root","","hr") ;
+     //$con=mysqli_connect("localhost","root","","hr") ;
     //mysqli_select_db("hr");
-    echo $con;
-    
+   
    
     $sql="INSERT INTO `employee`( `EmployeeId`, `FirstName`, `MiddleName`, `LastName`, `Birthdate`, `Gender`, `Address1`, `Address2`, `Address3`, `CityId`, `Mobile`, `Email`, `Password`, `AadharNumber`, `MaritalStatus`, `PositionId`, `JoinDate`, `LeaveDate`, `StatusId`, `RoleId`, `ImageName`, `Salary`) VALUES ('$empid',' $fname', '$mname','$lname','$bdate','$gender','$address1','$address2','$address3', '$city','$mnumber','$email','$password','$aadharcard','$marital','$position','$joindate','$leavedate','$status','$role','$pfimg','$Salary')";
-    mysqli_query($sql);
-   header("location:employeeadd.php");
+	/*
+	echo '<pre>';
+	var_dump($sql);
+	echo '</pre>';
+	*/
+
+	if($db->query($sql) === TRUE){
+		echo 'done insertion';
+	}else{
+		echo 'Error' . $db->error ;
+	}
+//   mysqli_query($sql);
+   
+   //header("location:employeeadd.php");
+   
+   
+  //reuse the connction string created already
+  //added the salary field in the database
+  //give feedback to the user by use of toasts or messages, will also helpyou debug_backtrace
+  //remove the echos while defining the variables above instaed aof echo $status = $_POST ['satta] should be $status =$_POST['sytatt];
+  //dont forget to uncomment your redirect func when done    //header("location:employeeadd.php");
+  //also handle the exceptions for instance what happens when a value is missing
+//also fix the date feature. it keeps reerting to todays date  
+//also look into prepared statementsalso look into prepared statements for security purposes (prevents SQL injection)
+
 }
 ?>
 

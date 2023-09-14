@@ -3,11 +3,11 @@
 <?php
 
 
-$conn = mysql_connect("localhost","root","");
-var_dump($conn);
-mysql_select_db("hr",$conn);
+$conn = mysqli_connect("localhost","root","");
+//var_dump($conn);
+mysqli_select_db($conn, "hr");
 $query = "Select u.Employeeid,u.FirstName,u.JoinDate,u.Salary from employee u";
-$results =  mysql_query($query);
+$results =  mysqli_query($conn, $query);
 echo "<center><h1>HRMS SALARY DETAILS</h1></center>";
 echo"<table border=1 >";
  echo   "<tr>";
@@ -17,7 +17,7 @@ echo    "<th> JOIN DATE</th>";
 echo    "<th> SALARY</th>";
 
  echo   "</tr>";
-while($row = mysql_fetch_array($results)){
+while($row = mysqli_fetch_array($results)){
 
     echo   "<tr>";
   echo  "<td> ".$row[0]."</td>";
